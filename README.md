@@ -1,10 +1,8 @@
 
 # JMC-Servo-Configuration
-Information on JMC integrated servos via PC Serial RS232 and ESP32 Modbus for tuning and controls
- 
-Info here has not been proofed, I just want to get as much down quickly while it's somewhat fresh. Please contact me with any corrections. My response times are slower than average, I definitely appreciate patience. 
+Information on JMC integrated servos via PC Serial RS232 and ESP32 Modbus for tuning and controls. This is a quick draft while it is fresh, but needs proofing. Please contact me with any corrections. My response times are slower than average, I definitely appreciate patience. 
 
-## Background
+## Background <p>
 This is an aggregation of all the relative information I have found regarding the JMC ISHV integrated servos. My main goal is to be able to use digital values or a PWM signal for position control rather than steps and pulses. As the speeds increase, more pulses need to be calculated and sent. Live changes to acceleration are especially resource intensive. The servo adds possible data sources from the driver for feedback and alarms. 
 
 There is a lot of excellent information out there I never would have been able to figure out. But it has been a lot more work than expected finding all the pieces to put together. It’s been useful to try and sort it all out to make it easier in the future. Hopefully someone else will as well. 
@@ -35,23 +33,19 @@ List of simulators to validate connections<p>
 https://www.dalescott.net/modbus-development/
 
 Python application which connects and configures JMC servos. Of note is the use of a Modbus library for communication. Lot of positive reviews, I haven't tried it yet.<p>
-https://github.com/robert-budde/iHSV-Servo-Tool
+https://github.com/robert-budde/iHSV-Servo-Tool <p>
 
 
-## Tips
-Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver parameters,
+# Steps <p>
 
+### Step 1: To connect the PC to the servo, get a USB to RS232 cable with a Prolific PL2303 chipset <p>
 
-## Steps
-
-### Step 1: To connect the PC to the servo, get a USB to RS232 cable with a Prolific PL2303 chipset
-
-PC serial connections can operate at low / CMOS voltage levels. RS232 serial can be as high as 15v, but will work with at least 5v. The cables are doing more than just wiring. I tried two FTDI USB serial programming boards with no success. I have to imagine that some other brands would work, but several sources were very direct about the need to use a cable with the PL2303 chip. I ended up buying two, LED indicators are very useful.  
+PC serial connections can operate at low / CMOS voltage levels. RS232 serial can be as high as 15v, but will work with at least 5v. The cables are doing more than just wiring. I tried two FTDI USB serial programming boards with no success. I have to imagine that some other brands would work, but several sources were very direct about the need to use a cable with the PL2303 chip. I ended up buying two, LED indicators are very useful.  <p>
 
 The pl2303 chip is inside the DB9 end of the USB cables I found, so I couldn’t just cut the end off to wire to the servo. Getting a female DB9 made testing possible by pushing wires in and connecting to the servo. That worked for a couple days until I accidently shorted it out. And now I have a cable with indicator lights 😊
 
 
-### Step 2: Install drivers before connecting cable to PC.
+### Step 2: Install drivers before connecting cable to PC. <p>
 
 The catch with the PL2303 chip is that it only recently has been included with Windows and there can be problems with various combinations of chip and drivers. Installing the desired driver before connecting the cable will stop Windows from auto installing the latest driver. The 4100 version did not work with my first cable 
 
@@ -80,6 +74,9 @@ Overwhelmed by ModBus overhead. It seems to be very device specific. Each parame
 ### Step 6: Read the Alarm and configure other outputs as needed. 
 What will be the burden on the ESP?
 
+## Tips
+Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
+<P></P>
 
 ## My observation of parameters so far
 
