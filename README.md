@@ -26,6 +26,9 @@ https://www.ifamilysoftware.com/Prolific_PL-2303_Code_10_Fix.html
 I purchased my motor from the G-Penny store on AliExpress. My motor came with 6.07 firmware. The recommendation is to go with v6 firmware as it has additional parameters available. The motor was on sale and they have answered my questions amazingly fast so.<p>
 https://www.aliexpress.com/store/1100702143
 
+Silly video of sounds difference between stepper and servo:
+https://youtu.be/H-RcKOVN0RY
+
 
 ## Software
 
