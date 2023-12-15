@@ -17,7 +17,7 @@ https://www.rocketronics.de
 CNC User Blog with a full tear down<p>
 https://drmrehorst.blogspot.com/2020/04/ihsv-servomotor-information.html
 
-A video on connecting to the service with a PC. Part 2 gets into specific tuning parameters.<p>
+A video on connecting with a PC. Goes through the DB9 pin outs! Part 2 gets into specific tuning parameters.<p>
 https://youtu.be/_9Q-VFesnA0
 
 Fixes for driver issues with the PL2303 (mostly due to older cables) <p>
@@ -27,16 +27,21 @@ I purchased my motor from the G-Penny store on AliExpress. My motor came with 6.
 https://www.aliexpress.com/store/1100702143
 
 
-Modbus software
+## Software
 
-List of simulators to validate connections<p>
-https://www.dalescott.net/modbus-development/
+The PC Control software is in this repo.  Go with the latest version, they're making constant improvements. 
+
+This serial monitor is free for a month and allow you to monitor ports in use! Perfect to sniff out what's happening with the PC software :)
+https://www.serial-port-monitor.org/
 
 Python application which connects and configures JMC servos. Of note is the use of a Modbus library for communication. Lot of positive reviews, I haven't tried it yet.<p>
 https://github.com/robert-budde/iHSV-Servo-Tool <p>
 
+Modbus simulators - simulate a master to connect to the device or simulate a slave and test out the esp32. List of simulators: <p>
+https://www.dalescott.net/modbus-development/
 
-# Steps <p>
+
+# Steps to connect servo to Windows <p>
 
 ### Step 1: To connect the PC to the servo, get a USB to RS232 cable with a Prolific PL2303 chipset <p>
 
@@ -75,8 +80,10 @@ Overwhelmed by ModBus overhead. It seems to be very device specific. Each parame
 What will be the burden on the ESP?
 
 ## Tips
-Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
-<P></P>
+1. Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
+<P>
+ 
+</P>
 
 ## My observation of parameters so far
 
