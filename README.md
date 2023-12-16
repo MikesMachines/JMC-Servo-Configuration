@@ -2,47 +2,63 @@
 # JMC-Servo-Configuration
 Information on JMC integrated servos via PC Serial RS232 and ESP32 Modbus for tuning and controls. This is a quick draft while it is fresh, but needs proofing. Please contact me with any corrections. My response times are slower than average, I definitely appreciate patience. 
 
-## Background <p>
+## Background 
 This is an aggregation of all the relative information I have found regarding the JMC ISHV integrated servos. My main goal is to be able to use digital values or a PWM signal for position control rather than steps and pulses. As the speeds increase, more pulses need to be calculated and sent. Live changes to acceleration are especially resource intensive. The servo adds possible data sources from the driver for feedback and alarms. 
 
 There is a lot of excellent information out there I never would have been able to figure out. But it has been a lot more work than expected finding all the pieces to put together. It’s been useful to try and sort it all out to make it easier in the future. Hopefully someone else will as well. 
+
+
+## Tips
+1. Some important parameters are only available in the PC Software by selecting the AC Servo / General Servo categories instead of integrated servos. Rocketronics.de shows the need for changing parameter 06-40 to 300 for reaching speeds beyond 1000rpm in their [guide on Speed and Torque modes](http://rocketronics.de/shop/de/jmc-servomotor-180w-ihsv57-30-18-36-21-38.html) which can be found in the documents tab. 
+1. Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
+
+
 
 ## Links
 
 Nearly all of the info here is from one of the links below. There's more to add.
 
-The best source for manufacturer manuals and software also supplies their own custom guides that get into changing the control modes. They sell the entire line of servos and also sell cables to connect the motor with the PC software.<p>
++ The best source for manufacturer manuals and software also supplies their own custom guides in the documents tab for each motor. The have their own guides on servo control modes and integrations. They sell servos and cables to connect the motor with the PC software.
 https://www.rocketronics.de
 
-CNC User Blog with a full tear down<p>
++ If you're looking to build a fun machine that uses this motor, check out the OSSM - Open Source Sex Machine. They have a large, active community of makers with an incredible range of skills. The JMC Servo is one of the recommended motors.
+https://github.com/KinkyMakers/OSSM-hardware
+
+
++ CNC User Blog with a full tear down  
 https://drmrehorst.blogspot.com/2020/04/ihsv-servomotor-information.html
 
-A video on connecting with a PC. Goes through the DB9 pin outs! Part 2 gets into specific tuning parameters.<p>
+
++ A video on connecting with a PC. Goes through the DB9 pin outs! Part 2 gets into specific tuning parameters.  
 https://youtu.be/_9Q-VFesnA0
 
-Fixes for driver issues with the PL2303 (mostly due to older cables) <p>
+
++ Fixes for driver issues with the PL2303 (mostly due to older cables)   
 https://www.ifamilysoftware.com/Prolific_PL-2303_Code_10_Fix.html
 
-I purchased my motor from the G-Penny store on AliExpress. My motor came with 6.07 firmware. The recommendation is to go with v6 firmware as it has additional parameters available. The motor was on sale and they have answered my questions amazingly fast so.<p>
+
++ I purchased my motor from the G-Penny store on AliExpress. My motor came with 6.07 firmware. The recommendation is to go with v6 firmware as it has additional parameters available. The motor was on sale and they have answered my questions amazingly fast.  
 https://www.aliexpress.com/store/1100702143
 
-Silly video of sounds difference between stepper and servo:
+
++ Silly video of sounds difference between stepper and servo:
 https://youtu.be/H-RcKOVN0RY
 
 
 ## Software
 
-The PC Control software is in this repo.  Go with the latest version, they're making constant improvements. 
 
-This serial monitor is free for a month and allow you to monitor ports in use! Perfect to sniff out what's happening with the PC software :)
++ JMC PC Control / Tuning Software    The PC Control software is in this repo.  Go with the latest version, they're making constant improvements. 2.4 scans baud rates, data, parity, and stop bits of the servo for an easy connection. 2.4.6 updates the connection screen for integrated servos
+
++ Serial Monitor       This serial monitor is free for a month and allow you to monitor and capture all data for ports even in use! Even better is that it won't mark a port in use so you can start monitoring and then connect software. Perfect to sniff out what's happening with the PC software :)
 https://www.serial-port-monitor.org/
 
-Python application which connects and configures JMC servos. Of note is the use of a Modbus library for communication. Lot of positive reviews, I haven't tried it yet.<p>
++ Python Servo Tool     Python application which connects and configures JMC servos. Of note is the use of a Modbus library for communication. Lot of positive reviews, I haven't tried it yet.<p>
 https://github.com/robert-budde/iHSV-Servo-Tool <p>
 
-Modbus simulators - simulate a master to connect to the device or simulate a slave and test out the esp32. List of simulators: <p>
++ Modbus simulators     There are free simulators that can act as a master or slave to help with dev and testing.  Here's a list of simulators with explanations: <p>
 https://www.dalescott.net/modbus-development/
-
+---
 
 # Steps to connect servo to Windows <p>
 
@@ -81,12 +97,6 @@ Overwhelmed by ModBus overhead. It seems to be very device specific. Each parame
 
 ### Step 6: Read the Alarm and configure other outputs as needed. 
 What will be the burden on the ESP?
-
-## Tips
-1. Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
-<P>
- 
-</P>
 
 ## My observation of parameters so far
 
