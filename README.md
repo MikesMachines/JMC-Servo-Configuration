@@ -11,7 +11,7 @@ There is a lot of excellent information out there I never would have been able t
 ## Tips
 1. Some important parameters are only available in the PC Software by selecting the AC Servo / General Servo categories instead of integrated servos. Rocketronics.de shows the need for changing parameter 06-40 to 300 for reaching speeds beyond 1000rpm in their [guide on Speed and Torque modes](http://rocketronics.de/shop/de/jmc-servomotor-180w-ihsv57-30-18-36-21-38.html) which can be found in the documents tab. 
 1. Use COM3 - COM8 only. I came across an article for a different manufacturer's servo software that said to not use any COM port number higher than 8. The software simply stops scanning. An unrelated article mentioned possible conflicts with COM1 and COM2.  So be safe and just use COM3 through COM8. Numbering is easy to change in the driver's advanced port properties.
-
+1. The terms 'master' and 'slave' are being replaced in documentation and some libraries with 'client' and 'server'. In Modbus, the client (master) is the one that makes the request to the server (slave). 
 
 
 ## Links
