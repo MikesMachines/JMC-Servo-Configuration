@@ -21,12 +21,15 @@ Nearly all of the info here is from one of the links below. There's more to add.
 + The best source for manufacturer manuals and software also supplies their own custom guides in the documents tab for each motor. The have their own guides on servo control modes and integrations. They sell servos and cables to connect the motor with the PC software.
 https://www.rocketronics.de
 
-+ If you're looking to build a fun machine that uses this motor, check out the OSSM - Open Source Sex Machine. They have a large, active community of makers with an incredible range of skills. The JMC Servo is one of the recommended motors.
++ If you're looking to build a fun machine that uses this motor, check out the OSSM (awesome!) - Open Source Sex Machine. They have a large, active community of makers with an incredible range of skills. The JMC Servo is one of the recommended motors.
 https://github.com/KinkyMakers/OSSM-hardware
 
 
 + CNC User Blog with a full tear down  
 https://drmrehorst.blogspot.com/2020/04/ihsv-servomotor-information.html
+
++ CNC blogger review that is more critical and highlights a lot of frustrations  
+https://blanch.org/jmc-servo-review-and-guide/
 
 
 + A video on connecting with a PC. Goes through the DB9 pin outs! Part 2 gets into specific tuning parameters.  
